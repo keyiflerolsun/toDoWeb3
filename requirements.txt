@@ -1,0 +1,14 @@
+setuptools
+wheel
+
+KekikTaban
+requests
+user_agents
+pytz
+
+Flask
+Flask_Sitemap
+
+web3==5.24.0
+py_solc_x
+solc-select

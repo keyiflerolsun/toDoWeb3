@@ -1,0 +1,68 @@
+{% if session %}
+    <div id="cuzdan_bilgi_alani" class="alert alert-dark" role="alert">
+        <h4 class="alert-heading text-center">BSC TestNet</h4>
+        <p>Kontrat : <a href="https://testnet.bscscan.com/address/{{ kontrat }}" class="alert-link" target="_blank">{{ kontrat }}</a></p>
+        <hr>
+        <p class="mb-0">İşte senin cüzdan adresin : <code>{{ session.cuzdan_hex }}</code></p>
+    </div>
+
+    <hr />
+
+    <div id="gorev_ekle_alani" class="form-inline d-flex justify-content-around pt-3">
+        <div class="col-auto px-0">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control form-control-lg" id="yeni_gorev_text" placeholder="Yeni Görev">
+            </div>
+        </div>
+
+        <div id="bekleyin_spin" class="col-auto px-0" style="display: none">
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw mb-3" aria-hidden="true"></i>
+        </div>
+
+        <div id="eklendi_tik" class="col-auto px-0" style="display: none">
+            <i class="fa fa-check mb-3" aria-hidden="true"></i>
+        </div>
+
+        <div class="col-auto px-0">
+            <button type="submit" class="btn btn-lg btn-dark mb-3" id="gorev_ekle_buton">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i> Ekle
+            </button>
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="sol_cikti_alani"></div>
+
+    {% include "tx_listesi.html" %}
+{% else %}
+    <div id="cuzdan_bilgi_alani" class="alert alert-danger" role="alert">
+        <h4 class="alert-heading text-center">Cüzdan Mevcut Değil</h4>
+        <p>BSC Testnet Girişi Başarısız!</p>
+        <hr>
+        <p class="mb-0"><em>Lütfen Cüzdanınıza Ait Private Key'i Giriniz..</em></p>
+    </div>
+
+    <hr />
+
+    <div id="cuzdan_ekle_alani" class="form-inline d-flex justify-content-around pt-3">
+        <div class="col-auto px-0">
+            <div class="input-group mb-3">
+                <input type="password" class="form-control form-control-lg" id="private_key" placeholder="Private Key">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control form-control-lg" id="cuzdan_adi" placeholder="Cüzdan Adı">
+            </div>
+        </div>
+
+        <div class="col-auto px-0">
+            <button type="submit" class="btn btn-lg btn-dark mb-3" id="cuzdan_ekle_buton">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i> Ekle
+            </button>
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="sol_cikti_alani"></div>
+{% endif %}

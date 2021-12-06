@@ -1,0 +1,24 @@
+{% extends "taban.html" %}
+{% block kekik_icerik %}
+
+<h3 class="d-flex justify-content-around">{{ icerik }}</h3>
+
+<hr />
+
+<div class="container-fluid">
+    <div id="ana_sayfa" class="row d-flex justify-content-center">
+
+        <div id="sol_panel" class="col" style="max-width: 500px;">
+            {% include "sol_panel.html" %}
+        </div>
+
+        {% if session %}
+            <div id="sag_panel" class="col col-lg-8 col-xl justify-content-center align-items-center">
+                {% include "yapilacaklar_listesi.html" %}
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

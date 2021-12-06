@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <!-- Gerekli meta tagler -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS - Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.2.0-g6c89781692/dist/css/bootstrap-dark.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+
+    <!-- Statik CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='stil.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon"/>
+
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    {% if baslik %}
+      <title>{{ baslik }} | KekikFlask</title>
+    {% else %}
+      <title>@keyiflerolsun | Taban Sayfa | Bootstrap</title>
+    {% endif %}
+
+</head>
+<body class="d-flex align-items-center min-vh-100">
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-info" aria-hidden="true"></i> | Burası Header Alanı
+            </div>
+            <div class="card-body">
+                {% block kekik_icerik %}
+                {% endblock %}
+            </div>
+            <div class="card-footer text-muted">
+                <i class="fa fa-bed" aria-hidden="true"></i> | Burası Footer Alanı
+            </div>
+        </div>
+    </div>
+
+        <!-- jQuery ve Bootstrap Bundle (Popper içerir) -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.2.0-g6c89781692/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Kişisel jS -->
+        <script src="{{ url_for('static', filename='cuzdan_ekle.js') }}"></script>
+        <script src="{{ url_for('static', filename='gorev_olustur.js') }}"></script>
+        <script src="{{ url_for('static', filename='gorev_tamamla.js') }}"></script>
+
+</body>
+</html>

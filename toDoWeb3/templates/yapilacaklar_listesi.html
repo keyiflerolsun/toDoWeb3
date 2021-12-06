@@ -1,0 +1,55 @@
+<div class="card rounded-3">
+    <div class="card-body p-4">
+
+        <p class="mb-2">
+            <span class="h2 me-2">Yapılacaklar Listesi</span>
+            <span class="badge badge-dark badge-pill mx-3">Web3 ile</span>
+        </p>
+
+        <p class="text-muted pb-2">{{ tarih }} • {{ session.cuzdan_adi }} - {{ gorevlerim|length }} Görev</p>
+
+        <ul id="yapilacaklar_listesi" class="list-group rounded-0">
+            {% for gorev in gorevlerim %}
+                {% if gorev.tamamlanma %}
+                    <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label id="gorev_buton" class="btn btn-dark active">
+                                <input type="checkbox" checked><i class="fa fa-check text-success" aria-hidden="true"></i>
+                            </label>
+                        </div>
+                        <div id="gorev_text" data-id="{{ gorev.gorev_id }}" class="ml-3"><s>{{ gorev.icerik }}</s></div>
+                    </li>
+                {% else %}
+                    <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label id="gorev_buton" class="btn btn-dark">
+                                <input type="checkbox"><i class="fa fa-close text-danger" aria-hidden="true"></i>
+                            </label>
+                        </div>
+                        <div id="gorev_text" data-id="{{ gorev.gorev_id }}" class="ml-3">{{ gorev.icerik }}</div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <div class="divider d-flex align-items-center my-4">
+            <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Özel Teşekkürler</p>
+        </div>
+
+        <ul class="list-group rounded-0 list-group-horizontal justify-content-center pb-2">
+            <li class="list-group-item border-0 d-flex align-items-center p-0">
+                <img src="https://avatars.githubusercontent.com/u/1525981?s=200&v=4" alt="Python" class="rounded-circle me-n2" width="45">
+            </li>
+            <li class="list-group-item border-0 d-flex align-items-center p-0">
+                <img src="data:image/png;base64,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" alt="Flask" class="rounded-circle me-n2" width="45">
+            </li>
+            <li class="list-group-item border-0 d-flex align-items-center p-0">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/512px-Unofficial_JavaScript_logo_2.svg.png" alt="javaScript" class="rounded-circle me-n2" width="45">
+            </li>
+            <li class="list-group-item border-0 d-flex align-items-center p-0">
+                <img src="https://miro.medium.com/fit/c/288/288/2*IaTcrFzma9lqLX3hJGV0UQ@2x.png" alt="Web3" class="rounded-circle me-n2" width="45">
+            </li>
+        </ul>
+
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div id="gorev_txler">
+    <div class="alert alert-dark text-center">Görev TX Listesi</div>
+
+    <div class="table-responsive-sm">
+        <table class="table table-bordered table-sm table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Olay</th>
+                    <th scope="col">Detay</th>
+                    <th scope="col">TX</th>
+                </tr>
+            </thead>
+            {% if tx_listesi %}
+                <tbody id='gorev_tablo'>
+                    {% for gorev_tx in tx_listesi %}
+                    <tr>
+                        <!-- <th scope="row">{{ gorev_tx.tarih }}</th> -->
+                        <th scope="row"><span data-toggle="tooltip" data-placement="top" title="{{ gorev_tx.tarih }}"><i class="fa fa-calendar" aria-hidden="true"></i> {{ gorev_tx.tarih.split(' ')[1] }}</span></th>
+                        <td>{{ gorev_tx.olay }}</td>
+                        <td>{{ gorev_tx.detay }}</td>
+                        <td><a href="{{ gorev_tx.bsc_scan }}" target="_blank">0x***{{ gorev_tx.tx_hash[-5:] }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {% else %}
+                <tbody id='gorev_tablo'>
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                    </tr>
+                </tbody>
+            {% endif %}
+        </table>
+    </div>
+</div>
